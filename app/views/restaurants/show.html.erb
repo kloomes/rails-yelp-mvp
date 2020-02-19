@@ -2,3 +2,11 @@
 <h3><%= @restaurant.category.capitalize %></h3>
 <h5><%= @restaurant.phone_number %></h5>
 <p><%= @restaurant.address %></p>
+<hr>
+<%= link_to "Add Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+<hr>
+<% @reviews.each do |review| %>
+<%= review.rating == 0 ? "☆ ☆ ☆ ☆ ☆" : '⭐️' * review.rating + '☆' * (5 - review.rating) %>
+<p><%= review.content %></p>
+<hr>
+<% end %>
